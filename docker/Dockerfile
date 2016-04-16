@@ -1,0 +1,8 @@
+FROM alpine
+RUN apk update && apk upgrade
+RUN apk add nodejs
+RUN npm install --save botkit
+RUN mkdir -p /opt/sembot
+ADD ./src/ /opt/sembot/
+CMD token=$TOKEN node /opt/sembot/sembot.js
+# xoxb-35246398913-vtSgVLgp3dceiWTSYPZjBJe2
