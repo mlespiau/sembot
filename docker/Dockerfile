@@ -7,4 +7,3 @@ RUN npm install --save mocha -g
 RUN mkdir -p /opt/sembot
 ADD ./src/ /opt/sembot/
 CMD token=$TOKEN node /opt/sembot/sembot.js
-# xoxb-35246398913-vtSgVLgp3dceiWTSYPZjBJe2
