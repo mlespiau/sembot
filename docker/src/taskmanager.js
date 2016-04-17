@@ -11,3 +11,9 @@ TaskManager.prototype.add = function(task) {
 TaskManager.prototype.getTasks = function(task) {
     return this._tasks;
 }
+
+TaskManager.prototype.asString = function() {
+    return this._tasks.map(function(task) {
+        return ' * ' + task;
+    }).join("\n");
+}
