@@ -1,14 +1,10 @@
 
 var Botkit = require('botkit');
-var tasks = ['Task 1', 'Task 2', 'Task 3'];
-
-var formatTasks = function() {
-    var out = '';
-    for (i = 0; i < tasks.length; ++i) {
-        out += ' * ' + tasks[i] + "\n";
-    }
-    return out;
-}
+var TaskManager = require('./taskmanager.js');
+var tm = new TaskManager();
+tm.add('Task 1');
+tm.add('Task 2');
+tm.add('Task 3');
 
 if (!process.env.token) {
   console.log('Error: Specify token in environment');
@@ -41,13 +37,13 @@ controller.hears(['quien es el que le hace segunda @matu?'],['direct_message','d
 });
 
 controller.hears(['daily review'], ['direct_message'], function(bot, message) {
-    bot.reply(message, "Task list is the following: " + formatTasks());
+    bot.reply(message, "Task list is the following: " + tm.asString());
 });
 
 controller.hears(['add task (.*)'], ['direct_message'], function(bot, message) {
     var newTask = message.match[1]; //match[1] is the (.*) group. match[0] is the entire group (open the (.*) doors).
-    tasks[tasks.length] = newTask;
-    bot.reply(message, "Added task, new task list is the following: " + formatTasks());
+    tm.add(newTask);
+    bot.reply(message, "Added task, new task list is the following: " + tm.asString());
 });
 
 controller.hears(['dm me'],['direct_message','direct_mention'],function(bot,message) {
