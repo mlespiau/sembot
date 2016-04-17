@@ -23,15 +23,15 @@ describe('TaskManager', function() {
         });
     });
     describe('#asString', function() {
-        it('should return formatted list of two tasks lalala', function(done) {
+        it('should return formatted list of two backlog tasks', function(done) {
             tm.add('Task 1');
             tm.add('Task 2');
-            should(tm.asString()).be.exactly(" * Task 1\n * Task 2");
+            should(tm.asString()).be.exactly("Backlog:\n * Task 1\n * Task 2");
             done();
         });
-        it('should return formatted list of one tasks', function(done) {
+        it('should return formatted list of one backlog task', function(done) {
             tm.add('Task 1');
-            should(tm.asString()).be.exactly(" * Task 1");
+            should(tm.asString()).be.exactly("Backlog:\n * Task 1");
             done();
         });
     });

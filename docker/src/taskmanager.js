@@ -13,7 +13,7 @@ TaskManager.prototype.getTasks = function(task) {
 }
 
 TaskManager.prototype.asString = function() {
-    return this._backlog.map(function(task) {
+    return "Backlog:\n" + this._backlog.map(function(task) {
         return ' * ' + task;
     }).join("\n");
 }
