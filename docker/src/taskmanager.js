@@ -1,19 +1,19 @@
 module.exports = TaskManager;
 
 function TaskManager() {
-    this._tasks = [];
+    this._backlog = [];
 }
 
 TaskManager.prototype.add = function(task) {
-    this._tasks.push(task);
+    this._backlog.push(task);
 }
 
 TaskManager.prototype.getTasks = function(task) {
-    return this._tasks;
+    return this._backlog;
 }
 
 TaskManager.prototype.asString = function() {
-    return this._tasks.map(function(task) {
+    return this._backlog.map(function(task) {
         return ' * ' + task;
     }).join("\n");
 }
